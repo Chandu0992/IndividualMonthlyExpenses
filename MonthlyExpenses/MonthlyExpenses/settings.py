@@ -123,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 #import dj_database_url
 #db_from_env = dj_database_url.config(conn_max_age=500)
-#DATABASES['default'].update(db_from_env)
+#ATABASES['default'].update(db_from_env)
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [

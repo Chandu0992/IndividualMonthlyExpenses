@@ -1,0 +1,135 @@
+{% extends "logout_heder.html" %}
+{% load staticfiles %}
+{% block body_block %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+    <script>
+    function selectValidate(){
+      if(document.eform.expense_type.value=='-1'){
+        alert("Please select Expenses Type");
+        return false;
+      }
+    }
+    function expValidate(){
+      if(document.jform.expenses.value=='-1'){
+        alert("Please select Expenses Type");
+        return false;
+      }
+    }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div>
+      <i style="font-size:20px"><b>Welcome :</b></i>{{ res.name }}
+    </div>
+
+  <form  action="{% url 'expenses' %}" method="post" name="eform" onsubmit="return selectValidate();">
+    {% csrf_token %}
+        <table align="center">
+            <tr>
+              {%for x in per_lst %}
+              <td>
+                <input  type="checkbox" name="per_lst" value="{{ x.mobile }}">{{ x.name }}
+              </td>
+              {%endfor%}
+            </tr>
+        </table>
+
+        <table align="center">
+          <tr>
+            <td>Expenses Type :</td>
+            <td>
+              <select name="expense_type" id="expenses" class="view">
+                <option value="-1" selected>Select Expenses</option>
+                  <option value="trip">Trip</option>
+                  <option value="dinner">Dinner</option>
+                  <option value="hangout">Hangout</option>
+                  <option value="market">Marketing</option>
+                  <option value="rent">Rent</option>
+                  <option value="loans">Loans</option>
+                  <option value="insurence">Insurance</option>
+                  <option value="others">Others</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>
+              <input type="date" class="view" name="udate" required>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Description</td>
+            <td>
+              <input type="text" class="view" name="udesc" placeholder="Description for spending" required>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Amount</td>
+            <td>
+              <input type="number" class="view" name="uamt" placeholder="Enter Total spending amount" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="hidden" name="mymob" value="{{res.mobile}}">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2" align="center">
+              <input type="submit" value="Save" class="btn btn-primary" style="padding:10pt 50pt">
+            </td>
+          </tr>
+        </table>
+        {% if msg %}
+        <div class="alert alert-success">
+            <center>
+            <strong>{{ msg }}</strong>
+          </center>
+          </div>
+      {% endif %}
+      </form>
+      <br>
+      <div align="center">
+        <form action="{% url 'showDetails' %}" name="jform" method="post" onsubmit="return expValidate();">
+          {% csrf_token %}
+          <input type="hidden" name="myMobile" value="{{res.mobile}}">
+          <caption>Show Expenses</caption>
+          <table>
+            <tr>
+              <td>Expenses Type</td>
+              <td><select name="expenses" id="expenses">
+                <option value="-1" selected>Select Expenses</option>
+                  <option value="all">All</option>
+                  <option value="trip">Trip</option>
+                  <option value="dinner">Dinner</option>
+                  <option value="hangout">Hangout</option>
+                  <option value="market">Marketing</option>
+                  <option value="rent">Rent</option>
+                  <option value="loans">Loans</option>
+                  <option value="insurence">Insurance</option>
+                  <option value="others">Others</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td>Start Date :</td>
+              <td><input type="date" name="sdt" required></td>
+            </tr>
+
+            <tr>
+              <td>End Date :</td>
+              <td><input type="date" name="edt" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align='center'><input type="submit" name="" value="Show Details" class="btn btn-primary"></td>
+            </tr>
+          </table>
+
+        </form>
+      </div>
+{% endblock %}

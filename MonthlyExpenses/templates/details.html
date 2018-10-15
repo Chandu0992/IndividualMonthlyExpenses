@@ -1,0 +1,30 @@
+{% extends "logout_heder.html" %}
+{% load staticfiles %}
+{% block body_block %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class="container" style="padding-left:20%">
+  <div class="jumbotron" style="width:80%;padding-left:5%;margin-top:15pt">
+      <center><caption><h1 style="color:blue">Expenses Details</h1></caption></center>
+        <table align='center' class="table table-striped table-dark" border="1">
+          <tr>
+            <td>Date</td>
+            <td>Type of Expenses</td>
+            <td>Description</td>
+            <td>Amount</td>
+          </tr>
+          {% for x in res_details %}
+          <tr>
+            <td>{{ x.dt }}</td>
+            <td>{{ x.type_exp }}</td>
+            <td>{{ x.desc }}</td>
+            <td>{{ x.amount }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="3">Total Month Expenses </td>
+            <td>{{ sum }}</td>
+          </tr>
+        </table>
+      </div>
+</div>
+{% endblock %}

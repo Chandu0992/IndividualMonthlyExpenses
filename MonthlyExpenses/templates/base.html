@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monthly Expenses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+    <script src="{% static "js/myscript.js" %}"></script>
+  </head>
+  <body>
+
+  <div class="topnav" id="myTopnav">
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'admin:index' %}">Admin</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#about">About</a>
+      <a href="{% url 'user_login' %}" style="float:right" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars fa-1x"></i>
+      </a>
+</div>
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 style="color:blue;">Individual Monthly Expenses</h2>
+        </div>
+        <div class="modal-body form-group" align="center">
+          <form action="{% url 'user_login' %}" method="POST">
+            {% csrf_token %}
+            <caption>Login</caption>
+            <table border='0' cellspacing="2">
+              <tr>
+                <td colspan="2">
+                  <input class="view" type="text" name="log_mob" placeholder="Enter Mobile/Email" required>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input  class = "view" type="password" name="log_pwd" placeholder="Password" required>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                  <input type="submit" value="Login" class="btn btn-outline-primary" style="padding:10px 50px;">
+                  <td align="center">
+                    <a href="{% url 'signup' %}">Signup</a>
+                  </td>
+                </td>
+
+              </tr>
+              <tr>
+                <td>
+                  {% if msg %}
+                  <div class="alert alert-danger">
+                    <strong>{{ msg }}</strong>
+                  </div>
+                  {% endif %}
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    {% block body_block %}
+
+    {% endblock %}
+  </body>
+</html>

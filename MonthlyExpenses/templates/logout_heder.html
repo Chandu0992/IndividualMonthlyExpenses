@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monthly Expenses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+    <script src="{% static "js/myscript.js" %}"></script>
+  </head>
+  <body>
+
+  <div class="topnav" id="myTopnav">
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'admin:index' %}">Admin</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#about">About</a>
+      <a href="{% url 'logout' %}" style="float:right" class="btn btn-info btn-lg">Logout</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars fa-1x"></i>
+      </a>
+</div>
+
+    {% block body_block %}
+
+    {% endblock %}
+  </body>
+</html>

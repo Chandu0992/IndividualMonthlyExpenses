@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+<form action="{% url 'saveData' %}" method="post">
+      {% csrf_token %}
+      <div style="margin-top:30pt">
+        <center><caption><b>Signup</b></caption></center>
+        <table align='center'>
+
+          <tr>
+            <td>
+              <input class="view" type="text" name="uname" placeholder="User Name" required>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input class="view" type="number" name="umobile" placeholder="Mobile Number" required>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input class="view" type="email" name="uemail" placeholder="Email" required>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="radio" name="ugen" value="male">Male &nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="ugen" value="female">Female
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input class="view" type="password" name="upassword" placeholder="Password" required>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="submit" value="Signup" class="view look">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              {% if msg %}
+              <div class="alert alert-success">
+                <strong>{{ msg }}</strong>
+              </div>
+              {% endif %}
+            </td>
+          </tr>
+        </table>
+      </form>
+      </div>
+
+  {% endblock %}

@@ -2,12 +2,133 @@
 {% load staticfiles %}
 <html lang="en" dir="ltr">
   <head>
+    <style media="screen">
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .topnav a {
+      float: left;
+      display: block;
+      color: #007bff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .active {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .topnav .icon {
+      display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+      .topnav a:not(:first-child) {display: none;}
+      .topnav a.icon {
+        float: right;
+        display: block;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .topnav.responsive {position: relative;}
+      .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+    }
+
+    .view{
+      width: 150%;
+      padding: 1em;
+      border: 1px solid #007bff;
+    }
+
+    .show{
+      width: 30%;
+      padding: 1em;
+      border: 1px solid #007bff;
+    }
+    div table tr td label{
+      font-family: arial;
+      color:#007bff;
+      font-size: 15pt;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        background-color: #20F5F2;
+        height:420px;
+    }
+
+    li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    li a.active {
+        background-color: #00ffe1;
+        color: white;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+        text-decoration: none;
+    }
+    </style>
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Monthly Expenses</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
     <script src="{% static "js/myscript.js" %}"></script>
+    <script type="text/javascript">
+
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+
+    function save(){
+      alert("Registered Sucessfully !");
+    }
+
+
+    </script>
   </head>
   <body>
 

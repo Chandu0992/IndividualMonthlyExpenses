@@ -1,1 +1,1 @@
-web: gunicorn MonthlyExpenses.wsgi --log-file -
+web: gunicorn MonthlyExpenses.wsgi --log-file - 
